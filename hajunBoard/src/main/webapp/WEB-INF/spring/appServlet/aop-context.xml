@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<!-- aop설정하는 configuration -->
+	<!-- 선언적 방식 aop 설정하기 1. aop: config 태그이용 aop:aspect 태그 클래스를 등록 aop: pointcut 
+		: 표현식 aop:befor||after||around.. : 표현식을 이용, 실행될 메소드를 지정 -->
+
+	<!-- <bean id="loggerAspectBean"
+		class="com.kh.spring.common.aop.LoggerAspect" />
+
+	aop 적용하기
+	<aop:config>
+		<aop:aspect ref="loggerAspectBean" id="loggerAspect">
+			<aop:pointcut
+				expression="execution(* com.kh.spring..insert*(..))" id="pc" />
+			<aop:before method="loggerBefor" pointcut-ref="pc" />
+		</aop:aspect>
+	</aop:config> --> 
+	<!-- 이건 LoggerAspect 클래스랑 연결되는거  --> 
+
+	<aop:aspectj-autoproxy/> <!-- 이게 있어요 aop가 정상적으로 돌아감 -->
+
+
+
+</beans>

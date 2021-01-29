@@ -4,8 +4,10 @@
 	<typeAliases>
 
 		<typeAlias type="com.project.hajun.common.typehendler.StringArrayTypeHandler" alias="strArr"/>
-		<typeAlias type="com.project.member.Vo.Member" alias="member"/>
-	
+		<typeAlias type="com.project.member.Vo.Member2" alias="member"/>
+		<typeAlias type="com.project.hajun.board.Vo.Board2" alias="board"/>
+		<typeAlias type="com.project.hajun.board.Vo.Attachment2" alias="attachment"/>	
+		<typeAlias type="com.project.hajun.board.Vo.BoardComment" alias="boardComment"/>	
 		
 	</typeAliases>
 </configuration>
