@@ -4,6 +4,21 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath }" />
+<<style>
+#x{
+right: 0;
+    top: 0;
+    color:black;
+    text-align: center;
+    width: 100%;
+    height: 35px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+
+   
+
+</style>
 
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param name="title" value=" "/>
@@ -63,7 +78,9 @@
               </div>
             </div>
           </div>
-                  <button>삭제하기</button>
+                  <button type="button" id="x" data-toggle="tooltip" data-placement="top"
+                title="Remove item" onclick="location.href='${path }/board/boardDelete.do?boardNo=${b.boardNo }&memberNo=${commonLogin.memberNo }'">Delete
+              </button>
 
         </div>
         <!-- Card -->

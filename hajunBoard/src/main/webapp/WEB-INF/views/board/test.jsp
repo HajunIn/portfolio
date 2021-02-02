@@ -99,7 +99,7 @@
         <area shape="rect" coords="00,00,150,300" href="https://github.com/HajunIn/portfolio/files/5909266/_.docx" alt="포폴">
     </map>
      <map name="personal3">
-        <area shape="rect" coords="00,00,150,300" href="https://github.com/HajunIn/project/files/5897320/default.docx" alt="깃허브">
+        <area shape="rect" coords="00,00,150,300" href="https://github.com/HajunIn/portfolio.git" alt="깃허브">
     </map>
       </div>
     </div>
