@@ -6,7 +6,7 @@
  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="${path}/resources/js/jquery-3.5.1.min.js"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
 
@@ -23,13 +23,13 @@
 <c:set var="path" value="${pageContext.request.contextPath }" />
 
 
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>포토폴리오</title>
-<link rel="stylesheet" href="${path }/resources/css/style.css" />
-<script src="${path}/resources/js/jquery-3.5.1.min.js"></script>
+
 
 </head>
 
@@ -51,7 +51,7 @@
                <ul class="navbar-nav mr-auto">
                   <li class="nav-item"><a class="nav-link" href="${path }">Home</a>
                   </li>
-                  <li class="nav-item"><a class="nav-link test" style="cursor:pointer;" onclick="fn_toggle();" >게시판</a></li><button onclick="location.href='${path}/board/test.do'">클릭</button>
+                  <li class="nav-item"><a class="nav-link test" style="cursor:pointer;" onclick="fn_toggle();" >게시판</a></li><%-- <button onclick="location.href='${path}/board/test.do'">클릭</button> --%>
                   <c:if test="${commonLogin ne null }">
                    <li class="nav-item"><a class="nav-link test" style="cursor:pointer;" href="${path}/board/goodsList.do?memberNo=${commonLogin.memberNo}" >등록상품 바로가기</a></li>
            		  </c:if>

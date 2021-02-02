@@ -148,9 +148,18 @@
   		SELECT COUNT(*) FROM BOARD2
   	</select>
   	
-  	<insert id="insertPurchase">
+  	<insert id="insertPurchase" parameterType="string">
   		INSERT INTO PURCHASE
-		VALUES(PURCHASENO.NEXTVAL) 
+		VALUES(PURCHASENO.NEXTVAL,#{memberNo}) 
+  	</insert>
+  	<insert id="inaertPurchaseDetail" parameterType="string">
+  	
+  	<selectKey keyProperty="PurchaseNo" resultType="_int" order="BEFORE"> 
+  	select PurchaseNo.currval as PurchaseNo from dual 
+  	</selectKey> 
+
+  	INSERT INTO PURCHASEDETAIL
+		VALUES(#PurchaseNo,#{boardNo},SYSDATE) 
   	</insert>
   	
 </mapper>

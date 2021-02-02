@@ -238,8 +238,9 @@ Search for what you want</h4>
           <tr >
    
             <th scope="row" >
-            <input name="boardNo" type="checkbox" value="${b.boardNo }" style="width: 30px;height: 30px;" >
-             <input type="hidden"  name="totalPrice" id="totalPrice" value="${b.price }">
+            <!-- 체크박스 -->
+           <%--  <input name="boardNo" type="checkbox" value="${b.boardNo }" style="width: 30px;height: 30px;" >
+             <input type="hidden"  name="totalPrice" id="totalPrice" value="${b.price }"> --%>
               <img src="${path }/resources/upload/board/${b.renamedFilename }" style="width: 150px; height: 150px; background-size: cover; "class="img-fluid z-depth-0">
             </th>
         
@@ -294,12 +295,12 @@ Search for what you want</h4>
 
       </table>
       <div id="pageBar">${pageBar }</div>
-       <input type="submit" id="x2" data-toggle="tooltip" data-placement="top" value="Buy"
+      <%--  <input type="submit" id="x2" data-toggle="tooltip" data-placement="top" value="Buy"
                 title="Remove item" >
         <div height="25">&nbsp;합계:&nbsp;<input id="total_sum" name="patTotalPrice" type="text" size="20" readonly></div>
     <!-- /.Shopping Cart table -->
     <div ><input id="hh"  type="hidden" name="boardNo2" value=""></div>
-       <input   type="hidden" name="memberNo" value="${commonLogin.memberNo }">
+       <input   type="hidden" name="memberNo" value="${commonLogin.memberNo }"> --%>
               	 </form>
 
     </div>

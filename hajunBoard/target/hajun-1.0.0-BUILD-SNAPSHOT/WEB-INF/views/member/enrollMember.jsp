@@ -196,23 +196,15 @@ right: 0;
 			  async: false,
 			 url : "${path}/member/loginCheck",
 			data : {"userId":$("#userId").val()} ,
-
 		success : function(data) {
-
-		
 	        if (data > 0) {
-	        /* 	$(".guide.ok").show();
-	        	$(".guide.error").hide(); */
-	        	alert("되라쫌!");
 	        	 r=false;
-
 	        } else{
 	        	$(".guide.error").show();
 	        	$(".guide.ok").hide();
 	        	 r=true;
 	        }
-	    }
-			
+	    }	
 		})
 		if(r== false){
 			return false;
@@ -221,41 +213,16 @@ right: 0;
 		}
    
 }; 
-
-
 </script>
 
 <script>
 	function logincheck() {
-
-	
-		  
-		
-		 
 			//이메일, 비밀번호 정규표현식
 			
 	let userId = $("#userId").val();
 		let pwval = $("#password").val()
 		let re = /^[a-z0-9]{4,12}$/;
 		var repw = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
-
-		if (userId != "") {
-			if (!re.test(userId)) {
-				alert("아이디 형식이 올바르지 못합니다.")
-				return false;
-			}
-			;
-		} else {
-			alert("아이디를 작성해주세요");
-			return false;
-		}
-		;
-
-		if ($('#name').val() === "" || $('#address').val() === ""
-				|| $('#email').val() === "" || $('phone').val() === "") {
-			alert('필수 항목들을 입력해주세요!');
-			return false;
-		}
 
 		//비밀번호 8자리 이상
 		//숫자,영대문자,영소문자,특수문자 포함
@@ -282,37 +249,25 @@ right: 0;
 			console.log("통과");
 		}
 		;
+		if ($('#name').val() === "" || $('#address').val() === ""
+			|| $('#email').val() === "" || $('phone').val() === "") {
+		alert('필수 항목들을 입력해주세요!');
+		return false;
+	}
+		
+		if (userId != "") {
+			if (!re.test(userId)) {
+				alert("아이디 형식이 올바르지 못합니다.")
+				return false;
+			};
+		} else {
+			alert("아이디를 작성해주세요");
+			return false;
+		};
 
 	};
 </script>
-		<script >
-		//function fn_toggle() {
-		/*  $("#idCheck").click(e=>{
-			
-		
-			$.ajax({
-				type : "post",
-				  dataType : "json",
-				 url : "${path}/member/loginCheck",
-				data : {"userId":$("#userId").val()} ,
 
-			success : function(data) {
-		        if (data > 0) {
-		        	$(".guide.ok").show();
-		        	$(".guide.error").hide();
-		         	return false;
-
-		        } else{
-		        	$(".guide.error").show();
-		        	$(".guide.ok").hide();
-		       
-		        }
-		    }
-			});
-		});  */
-		//}
-		
-</script>
 <script >
 						
 						

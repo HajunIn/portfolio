@@ -9,13 +9,11 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath }" />
 
+
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param name="title" value="메인화면" />
 </jsp:include>
-<!-- <div class="" style="width: 100%; height: 500px; border: solid; " >
-	<div class=""style="width: 80%;border: solid; height:500px; text-align: center; justify-content: center; margin: 0 auto;"></div>
-</div>
- -->
+
 <!--Main layout-->
 <main class="mt-5">
 
@@ -36,9 +34,9 @@
 
 					<!--Card image-->
 					<div class="view overlay">
-						<img
-							src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(72).jpg"
-							class="card-img-top" alt=""> <a href="#">
+						 <img
+							src="http://jeonseongyeop.com/nixflos/img/directing/directing_12.jpg"
+							class="card-img-top" alt="">
 							<div class="mask rgba-white-slight"></div>
 						</a>
 					</div>
@@ -50,7 +48,8 @@
 						<!--Text-->
 						<p class="card-text">This is a portfolio of'In Ha-jun'. Please
 							click the button below</p>
-						<a href="#!" class="btn btn-indigo">Button</a>
+							 <a class="btn btn-indigo test" style="cursor:pointer;" onclick="fn_toggle();" >게시판</a>
+						
 					</div>
 
 				</div>
@@ -68,7 +67,7 @@
 					<!--Card image-->
 					<div class="view overlay">
 						<img
-							src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(74).jpg"
+							src="http://jeonseongyeop.com/nixflos/img/directing/directing_11.jpg"
 							class="card-img-top" alt=""> <a href="#">
 							<div class="mask rgba-white-slight"></div>
 						</a>
@@ -81,7 +80,7 @@
 						<!--Text-->
 						<p class="card-text">This is a portfolio of'In Ha-jun'. Please
 							click the button below</p>
-						<a href="#" class="btn btn-indigo">Button</a>
+						<a class="btn btn-indigo test2" style="cursor:pointer;" onclick="fn_toggle2();"  >등록상품 바로가기</a>
 					</div>
 
 				</div>
@@ -99,7 +98,7 @@
 					<!--Card image-->
 					<div class="view overlay">
 						<img
-							src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(75).jpg"
+							src="http://jeonseongyeop.com/nixflos/img/directing/directing_06.jpg"
 							class="card-img-top" alt=""> <a href="#">
 							<div class="mask rgba-white-slight"></div>
 						</a>
@@ -112,7 +111,7 @@
 						<!--Text-->
 						<p class="card-text">This is a portfolio of'In Ha-jun'. Please
 							click the button below</p>
-						<a href="#" class="btn btn-indigo">Button</a>
+						<a onclick="fn_toggle3();"  class="btn btn-indigo test3" >MyPage</a>
 					</div>
 
 				</div>
@@ -129,7 +128,7 @@
 	
 
 
-<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js" charset="utf-8"></script>
+<%-- <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js" charset="utf-8"></script>
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
   <style type="text/css">
   html, div, body,h3{
@@ -148,9 +147,39 @@
 <div id="naver_id_login" style="text-align:center"><a href="${path}/member/naver"><img width="223" src="${pageContext.request.contextPath}/resources/img/naver_Bn_Green.PNG"/></a></div>
 <br>
 
-</main>
+</main> --%>
 <!--Main layout-->
 
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+ <script>
+ 			function fn_toggle() {
+                	if(${commonLogin == null}){
+                	alert('로그인후 이용가능합니다');
+                	return;
+                	}else {
+                		$(".test").attr("href","${path }/board/board.do?memberNo=${commonLogin.memberNo}");
+                	}
+ 			};
+ 			function fn_toggle2() {
+ 				if(${commonLogin == null}){
+ 				alert('로그인후 이용가능합니다');
+ 				return;
+ 				}else {
+ 					$(".test3").attr("href","${path}/board/goodsList.do?memberNo=${commonLogin.memberNo}");
+ 				}
+ 			};
+ 			
+ 			function fn_toggle3() {
+ 				if(${commonLogin == null}){
+ 				alert('로그인후 이용가능합니다');
+ 				return;
+ 				}else {
+ 					$(".test3").attr("href","${path }/member/memberDetail.do?memberNo=${commonLogin.memberNo }");
+ 				}
+ 			};
+			
+</script> 
+<script>
 
+</script>
