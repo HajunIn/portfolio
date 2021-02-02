@@ -6,6 +6,8 @@ import java.util.Map;
 import com.project.hajun.board.Vo.Attachment2;
 import com.project.hajun.board.Vo.Board2;
 import com.project.hajun.board.Vo.BoardComment;
+import com.project.hajun.board.Vo.Purchase;
+import com.project.hajun.board.Vo.PurchaseDetail;
 import com.project.member.Vo.Member2;
 
 public interface BoardService {
@@ -34,4 +36,6 @@ public interface BoardService {
 	int selectgoodCount(String memberNo);
 	
 	int selectBoardCount();
+	
+	int insertPurchase(List list, String memberNo);
 }

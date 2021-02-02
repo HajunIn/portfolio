@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.project.hajun.board.Vo.Attachment2;
 import com.project.hajun.board.Vo.Board2;
 import com.project.hajun.board.Vo.BoardComment;
+import com.project.hajun.board.Vo.PurchaseDetail;
 import com.project.member.Vo.Member2;
 
 public interface BoardDao {
@@ -40,4 +41,8 @@ public interface BoardDao {
 	int selectgoodCount(SqlSession session, String memberNo);
 
 	int selectBoardCount(SqlSession session);
+	
+	int insertPurchase(SqlSession session, String memberNo );
+	
+	int inaertPurchaseDetail(SqlSession session,String boardNoList);
 }

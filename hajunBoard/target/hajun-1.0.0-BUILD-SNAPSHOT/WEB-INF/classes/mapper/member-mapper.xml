@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper  namespace="member">
+<resultMap type="member" id="memberMap">
+		<result column="memberType" property="memberType" typeHandler="strArr" />
+	</resultMap>
+  
+  <update id="memberList"  parameterType="member" >
+  		INSERT INTO MEMBER2
+		VALUES(MEMBERNO.NEXTVAL,#{userId},#{password},
+		#{userName},#{gender},#{age},#{email},#{phone},#{address},
+		SYSDATE,#{memberType,typeHandler=strArr},#{detailAddress})
+  </update>
+  
+  <select id="selectOneMember1" parameterType="String"
+		resultMap="memberMap">
+		SELECT * FROM MEMBER2 WHERE USERID=#{userId}
+	</select>
+	
+	
+	
+	
+	<insert id="insertBoard" parameterType="board">
+		INSERT INTO BOARD2
+		VALUES(BOARDNO.NEXTVAL,#{memberNo},#{boardTitle},#{boardWriter},#{boardContent},SYSDATE,#{price})
+		<selectKey keyProperty="boardNo" resultType="_int"
+			order="AFTER">
+			<!-- 본쿼리문을 실행하기전이나 후에 특정한값을 가져올때 사용 -->
+			SELECT BOARDNO.CURRVAL FROM DUAL
+		</selectKey>
+	
+	</insert>
+	
+	
+		<insert id="insertAttachment" parameterType="attachment">
+		 INSERT INTO
+		ATTACHMENT2 VALUES(ATTACHMENTNO.NEXTVAL,#{boardNo},
+		#{originalFilename},#{renamedFilename},DEFAULT)
+	</insert>
+	
+
+	
+	<select id="selectAttList" parameterType="string" resultType="attachment">
+	SELECT A.* 
+	FROM ATTACHMENT2  A
+	JOIN BOARD2 B ON(B.BOARDNO = A.BOARDNO)
+	JOIN MEMBER2 M ON(M.MEMBERNO = B.MEMBERNO)
+	WHERE  B.MEMBERNO =#{memberNo}
+	</select>
+	
+	<select id="whereSerch" parameterType="map" resultType="attachment">
+		SELECT A.* , B.* ,M.MEMBERNO, M.MEMBERTYPE
+		FROM ATTACHMENT2  A
+		JOIN BOARD2 B ON(B.BOARDNO = A.BOARDNO)
+		JOIN MEMBER2 M ON(M.MEMBERNO = B.MEMBERNO)
+	
+	
+	 		<if test="title != null">
+               WHERE  BOARDTITLE LIKE '%'||#{title}||'%'
+            </if>
+            <if test="con != null">
+               AND  BOARDCONTENT LIKE '%'||#{con}||'%'
+            </if>
+   			  <if test="price != null">
+               AND  PRICE <![CDATA[>=]]> #{price}
+            </if>
+            
+            <if test="sDate or eDate != null">
+			<choose>
+				<when test="sDate == eDate">
+					AND BOARDDATE <![CDATA[>=]]> #{sDate}
+				</when>
+				<otherwise>
+				 AND UPLOADDATE BETWEEN   #{sDate}  AND #{eDate}
+				</otherwise>
+			</choose>
+		</if>
+		 
+		
+		
+	</select>
+	
+	
+	 <delete id="boardDelete" parameterType="string" >
+		DELETE FROM BOARD2 WHERE BOARDNO=#{boardNo}
+	</delete> 
+	
+	<select id="boardDetail" parameterType="string" resultType="attachment">
+		SELECT A.* ,B.*
+		FROM ATTACHMENT2  A
+		JOIN BOARD2 B ON(B.BOARDNO = A.BOARDNO)
+		JOIN MEMBER2 M ON(M.MEMBERNO = B.MEMBERNO)
+		WHERE  B.BOARDNO=#{boardNo}
+	</select>
+	
+	<select id="memberDetail" parameterType="string" resultMap="memberMap">
+	   SELECT * FROM MEMBER2
+        WHERE MEMBERNO=#{memberNo}
+
+	</select>
+	
+	<update id="memberModifi" parameterType="member" >
+	UPDATE MEMBER2 SET 
+	GENDER=#{gender},
+	AGE=#{age},
+	EMAIL=#{email},
+	PHONE=#{phone},
+	ADDRESS=#{address},
+	MEMBERTYPE=#{memberType,typeHandler=strArr}
+	WHERE MEMBERNO=#{memberNo}
+	
+	</update>
+	
+	<insert id="boardComment" parameterType="boardComment">
+		INSERT INTO BOARDCOMMENT
+		VALUES(COMMENTNO.NEXTVAL,#{boardNo},#{commentTitle},
+		#{commentContent},SYSDATE)
+	</insert>
+	
+	<select id="selectBoardComment" parameterType="string" resultType="boardComment">
+     SELECT B.*,BOARDWRITER ,RENAMEDFILENAME
+	    FROM BOARDCOMMENT B
+    	JOIN BOARD2 N ON(N.BOARDNO = B.BOARDNO)
+        JOIN ATTACHMENT2 A ON(A.BOARDNO=B.BOARDNO)
+	 WHERE B.BOARDNO=#{boardNo}
+    ORDER BY COMMENTDATE DESC
+  	</select>
+  	<select id="selectCount" parameterType="string" resultType="_int">
+  	    SELECT COUNT(*) FROM BOARDCOMMENT 
+  	</select>
+  	<select id="selectgoodCount" parameterType="string" resultType="_int">
+  	SELECT COUNT(*) FROM BOARD2 WHERE MEMBERNO=#{memberNo}
+  	</select>
+  	
+  	<select id="goodsList" parameterType="map" resultType="attachment">
+		SELECT A.* ,B.*
+		FROM ATTACHMENT2  A
+		JOIN BOARD2 B ON(B.BOARDNO = A.BOARDNO)
+		JOIN MEMBER2 M ON(M.MEMBERNO = B.MEMBERNO)
+		WHERE M.MEMBERNO=#{memberNo}
+		</select>
+  	
+  	<select id="selectOneMember2" parameterType="string" resultType="_int">
+  	SELECT COUNT(*) FROM MEMBER2 WHERE USERID = #{userId}
+  	</select>
+  	
+  	<select id="selectBoardCount" resultType="_int">
+  		SELECT COUNT(*) FROM BOARD2
+  	</select>
+  	
+  	<insert id="insertPurchase">
+  		INSERT INTO PURCHASE
+		VALUES(PURCHASENO.NEXTVAL) 
+  	</insert>
+  	
+</mapper>

@@ -1,5 +1,6 @@
 package com.project.hajun.board.Dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.project.hajun.board.Vo.Attachment2;
 import com.project.hajun.board.Vo.Board2;
 import com.project.hajun.board.Vo.BoardComment;
+import com.project.hajun.board.Vo.PurchaseDetail;
 import com.project.member.Vo.Member2;
 
 @Repository
@@ -83,6 +85,16 @@ public class BoardDaoImpl implements BoardDao {
 	@Override
 	public int selectBoardCount(SqlSession session) {
 		return session.selectOne("member.selectBoardCount");
+	}
+
+	@Override
+	public int insertPurchase(SqlSession session,String memberNo) {
+		return session.insert("member.insertPurchase",memberNo);
+	}
+
+	@Override
+	public int inaertPurchaseDetail(SqlSession session, String boardNoList) {
+		return session.insert("member.inaertPurchaseDetail",boardNoList);
 	}
 
 	

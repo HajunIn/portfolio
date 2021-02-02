@@ -25,6 +25,8 @@ import com.project.hajun.board.Service.BoardService;
 import com.project.hajun.board.Vo.Attachment2;
 import com.project.hajun.board.Vo.Board2;
 import com.project.hajun.board.Vo.BoardComment;
+import com.project.hajun.board.Vo.Purchase;
+import com.project.hajun.board.Vo.PurchaseDetail;
 import com.project.hajun.pageBar.PageBar;
 import com.project.member.Vo.Member2;
 
@@ -300,7 +302,7 @@ public class BoardController {
 		 
 		 @RequestMapping("/board/goodsList.do")
 		 public ModelAndView goodsList(ModelAndView mv, String memberNo,@RequestParam(value = "cPage", defaultValue = "1") int cPage,
-					@RequestParam(value = "numPerpage", defaultValue = "5") int numPerpage) {
+					@RequestParam(value = "numPerpage", defaultValue = "8") int numPerpage) {
 			 System.out.println("나와라"+memberNo);
 			 
 			 List<Attachment2> board = service.goodsList(memberNo,cPage, numPerpage);
@@ -317,11 +319,43 @@ public class BoardController {
 		 }
 		 
 		 @RequestMapping("/board/goodsPay.do")
-		 public ModelAndView goodsPay(ModelAndView mv,String boardNo) {
+		 public ModelAndView goodsPay(HttpServletRequest request, ModelAndView mv,@RequestParam(value = "boardNo2", required = false) String boardNo, 
+				 Purchase Purchase, String memberNo) {
+			// String[] arrayParam = request.getParameterValues("boardNo");
+			 	
+			 String pd=boardNo;
+
+			 String[] arr = pd.split(",");
 			 
+			 List list = new ArrayList();
+			 for(String a : arr) {
+				 System.out.println(a.toString());
+				 PurchaseDetail boardNoList = new PurchaseDetail();
+				 boardNoList.setBoardNo(a);
+				 list.add(boardNoList);
+			
+			 }
+			 
+		
+			 System.out.println("????"+list);
+			 int p = service.insertPurchase(list,memberNo);
+			 
+		
 			 System.out.println("왜 안되지?"+boardNo);
 			
-			 System.out.println("?????");
+			
+			
+				
+			 
+			
+			 
+//			 Map<String, Object> paramMap = new HashMap<String, Object>();
+//				paramMap.put("boardNoList", boardNoList);
+//				paramMap.put("patTotalPrice", patTotalPrice);
+			
+			
+			
+		//	 System.out.println("결과는"+p);
 			 
 			 mv.setViewName("goods/pay");
 			 return mv;
@@ -357,6 +391,12 @@ public class BoardController {
 				mv.setViewName("common/msg");
 				return mv;
 			}
+		 
+		 @RequestMapping("/board/test.do")
+		 public String text() {
+			 System.out.println("++++++");
+			 return "/board/test";
+		 }
 		 
 	  
 	 

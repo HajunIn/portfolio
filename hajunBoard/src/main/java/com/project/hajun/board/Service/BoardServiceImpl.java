@@ -11,6 +11,8 @@ import com.project.hajun.board.Dao.BoardDao;
 import com.project.hajun.board.Vo.Attachment2;
 import com.project.hajun.board.Vo.Board2;
 import com.project.hajun.board.Vo.BoardComment;
+import com.project.hajun.board.Vo.Purchase;
+import com.project.hajun.board.Vo.PurchaseDetail;
 import com.project.member.Vo.Member2;
 
 
@@ -99,6 +101,23 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int selectBoardCount() {
 		return dao.selectBoardCount(session);
+	}
+
+	@Override
+	public int insertPurchase(List list, String memberNo) {
+	
+		int result=dao.insertPurchase(session,memberNo);
+		if(result>0) {
+			if(list!=null) {
+				for(int i=0; i<list.size();i++) {
+					String boardNoList = String.valueOf(list.get(i));
+					System.out.println("어케나옴?"+boardNoList);
+					dao.inaertPurchaseDetail(session,boardNoList);
+				}
+			}
+		}
+		return result;
+		
 	}
 	
 	
