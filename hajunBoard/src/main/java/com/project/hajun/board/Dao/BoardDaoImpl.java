@@ -38,8 +38,8 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	@Override
-	public List<Attachment2> whereSerch(SqlSession session, Map paramMap,int cPage, int numPerpage) {
-		return session.selectList("member.whereSerch",paramMap,new RowBounds((cPage-1)*numPerpage,numPerpage));
+	public List<Attachment2> whereSerch(SqlSession session,int cPage, int numPerpage) {
+		return session.selectList("member.whereSerch",null,new RowBounds((cPage-1)*numPerpage,numPerpage));
 	}
 
 	@Override

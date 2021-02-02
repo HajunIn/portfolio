@@ -4,14 +4,14 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page import="com.project.member.Vo.Member2,java.util.*" %>
-<%
+<%-- <%
 	String[] memberType=((Member2)request.getAttribute("mem")).getMemberType();
 	List<String> list=new ArrayList();
 	if(memberType!=null){
 		list=Arrays.asList(memberType);//배열을 리스스로 변환
 	}
 
-%>
+%> --%>
 
 <style>
 .click,#btn-add{
@@ -117,7 +117,7 @@ Search for what you want</h4>
         <!-- Material outline input -->
         <div class="md-form md-outline form-lg hradTitle" >
           <label for="form1">Title</label>
-          <input type="hidden" name="memberNo" value="${commonLogin.memberNo }">
+         <%--  <input type="hidden" name="memberNo" value="${commonLogin.memberNo }"> --%>
           <input type="text" id="form1" name="title" class="form-control form-control-lg" placeholder="제목" style="width: 150px; height:30px; font-size: 13px;">
         </div>
         
@@ -266,11 +266,11 @@ Search for what you want</h4>
         
            
             <td class=""  >
-            <c:if test="${b.memberNo == commonLogin.memberNo}">
-              <button type="button" id="x" data-toggle="tooltip" data-placement="top"
+          <c:if test="${b.memberNo == commonLogin.memberNo}"> 
+               <button type="button" id="x" data-toggle="tooltip" data-placement="top"
                 title="Remove item" onclick="location.href='${path }/board/boardDelete.do?boardNo=${b.boardNo }&memberNo=${commonLogin.memberNo }'">Delete
               </button>
-     		</c:if>
+     		</c:if> 
      		
             </td>
              

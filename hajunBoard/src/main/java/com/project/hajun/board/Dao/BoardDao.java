@@ -21,7 +21,7 @@ public interface BoardDao {
 
 	List<Attachment2> selectAttList(SqlSession session, String memberNo);
 
-	List<Attachment2> whereSerch(SqlSession session, Map paramMap, int cPage, int numPerpage);
+	List<Attachment2> whereSerch(SqlSession session, int cPage, int numPerpage);
 
 	int boardDelete(SqlSession session,String boardNo);
 

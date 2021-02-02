@@ -38,7 +38,7 @@ public class BoardController {
 	BoardService service;
 
 	@RequestMapping("/board/board.do")
-	public ModelAndView boardList(HttpServletRequest request, ModelAndView mv, String memberNo,
+	public ModelAndView boardList(HttpServletRequest request, ModelAndView mv,
 			// 페이지바 만들기
 			@RequestParam(value = "cPage", defaultValue = "1") int cPage,
 			@RequestParam(value = "numPerpage", defaultValue = "10") int numPerpage) {
@@ -47,31 +47,17 @@ public class BoardController {
 		 
 
 		 
-		System.out.println("되니?" + memberNo);
+		
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		String memberNo1 = request.getParameter("memberNo");
 		paramMap.put("memberNo", memberNo1);
 
-		List<Attachment2> board = service.whereSerch(paramMap, cPage, numPerpage);
+		List<Attachment2> board = service.whereSerch( cPage, numPerpage);
 		int totalData = service.selectBoardCount(); /* 이거페이지바 */
 
-		 mv.addObject("pageBar", PageBar.getPageBar2(totalData, cPage,numPerpage,memberNo, "board.do"));
+		 mv.addObject("pageBar", PageBar.getPageBar3(totalData, cPage,numPerpage, "board.do"));
 		 mv.addObject("totalData", totalData);
-		 Member2 mem = service.memberDetail(memberNo);
-		  System.out.println("sss"+mem);
-		  mv.addObject("mem", mem);
-		  mv.addObject("memberType", String.join(",", mem.getMemberType()));
-		 System.out.println("???"+mem.getMemberType());
-		  ArrayList<String> arrayList = new ArrayList<>();
-
-			for(String temp : mem.getMemberType()){
-
-			  arrayList.add(temp);
-
-			}
-			System.out.println("진짜 결과는!?"+arrayList);
-			
-			mv.addObject("arrayList", arrayList);
+		
 			
 			
 		System.out.println("결과" + board);
@@ -85,7 +71,7 @@ public class BoardController {
 
 	@RequestMapping("/board/selectBoard.do")
 	public ModelAndView selectBoard(HttpServletRequest request, ModelAndView mv, String title, String con, Date sDate,
-			Date eDate, String text, String memberNo, int price,
+			Date eDate, String text,  int price,
 			@RequestParam(value = "cPage", defaultValue = "1") int cPage,
 			@RequestParam(value = "numPerpage", defaultValue = "10") int numPerpage) {
 
@@ -93,7 +79,7 @@ public class BoardController {
 		System.out.println("2" + con);
 		System.out.println("3" + sDate);
 		System.out.println("4" + eDate);
-		System.out.println("5" + memberNo);
+	
 		System.out.println("5" + price);
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		String title1 = request.getParameter("title");
@@ -108,25 +94,25 @@ public class BoardController {
 		paramMap.put("memberNo", memberNo1);
 		String price1 = request.getParameter("price");
 		paramMap.put("price", price1);
-		List<Attachment2> board = service.whereSerch(paramMap, cPage, numPerpage);
+		List<Attachment2> board = service.whereSerch( cPage, numPerpage);
 		mv.addObject("board", board);
 		int totalData = service.selectBoardCount(); /* 이거페이지바 */
 		
-		 Member2 mem = service.memberDetail(memberNo);
-		  mv.addObject("mem", mem);
-		  mv.addObject("memberType", String.join(",", mem.getMemberType()));
-		  ArrayList<String> arrayList = new ArrayList<>();
+		/*
+		 * Member2 mem = service.memberDetail(memberNo); mv.addObject("mem", mem);
+		 * mv.addObject("memberType", String.join(",", mem.getMemberType()));
+		 * ArrayList<String> arrayList = new ArrayList<>();
+		 * 
+		 * for(String temp : mem.getMemberType()){
+		 * 
+		 * arrayList.add(temp);
+		 * 
+		 * } System.out.println("진짜 결과는!?"+arrayList);
+		 * 
+		 * mv.addObject("arrayList", arrayList);
+		 */
 
-			for(String temp : mem.getMemberType()){
-
-			  arrayList.add(temp);
-
-			}
-			System.out.println("진짜 결과는!?"+arrayList);
-			
-			mv.addObject("arrayList", arrayList);
-
-		 mv.addObject("pageBar", PageBar.getPageBar2(totalData, cPage,numPerpage,memberNo, "board.do"));
+		 mv.addObject("pageBar", PageBar.getPageBar3(totalData, cPage,numPerpage, "board.do"));
 		 mv.addObject("totalData", totalData);
 		mv.setViewName("board/board");
 		System.out.println("======" + board);
@@ -193,22 +179,21 @@ public class BoardController {
 	  String loc = "";
 	  
 	  if (result > 0) { 
-		  mv.addObject("board", service.whereSerch(paramMap, cPage, numPerpage)); 
+		  mv.addObject("board", service.whereSerch( cPage, numPerpage)); 
 		  int totalData = service.selectBoardCount(); /* 이거페이지바 */
-		  Member2 mem = service.memberDetail(memberNo);
-		  mv.addObject("mem", mem);
-		  mv.addObject("memberType", String.join(",", mem.getMemberType()));
-		  ArrayList<String> arrayList = new ArrayList<>();
-
-			for(String temp : mem.getMemberType()){
-
-			  arrayList.add(temp);
-
-			}
-			System.out.println("진짜 결과는!?"+arrayList);
-			
-			mv.addObject("arrayList", arrayList);
-
+			/*
+			 * Member2 mem = service.memberDetail(memberNo); mv.addObject("mem", mem);
+			 * mv.addObject("memberType", String.join(",", mem.getMemberType()));
+			 * ArrayList<String> arrayList = new ArrayList<>();
+			 * 
+			 * for(String temp : mem.getMemberType()){
+			 * 
+			 * arrayList.add(temp);
+			 * 
+			 * } System.out.println("진짜 결과는!?"+arrayList);
+			 * 
+			 * mv.addObject("arrayList", arrayList);
+			 */
 
 			 mv.addObject("pageBar", PageBar.getPageBar2(totalData, cPage,numPerpage,memberNo, "board.do"));
 			 mv.addObject("totalData", totalData);

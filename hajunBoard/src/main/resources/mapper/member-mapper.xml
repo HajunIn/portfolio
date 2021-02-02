@@ -48,7 +48,7 @@
 	WHERE  B.MEMBERNO =#{memberNo}
 	</select>
 	
-	<select id="whereSerch" parameterType="map" resultType="attachment">
+	<select id="whereSerch" resultType="attachment">
 		SELECT A.* , B.* ,M.MEMBERNO, M.MEMBERTYPE
 		FROM ATTACHMENT2  A
 		JOIN BOARD2 B ON(B.BOARDNO = A.BOARDNO)

@@ -54,8 +54,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<Attachment2> whereSerch(Map paramMap, int cPage, int numPerpage) {
-		return dao.whereSerch(session, paramMap, cPage, numPerpage);
+	public List<Attachment2> whereSerch( int cPage, int numPerpage) {
+		return dao.whereSerch(session, cPage, numPerpage);
 	}
 
 	@Override

@@ -17,7 +17,7 @@ public interface BoardService {
 
 	int insertBoard(Board2 board,List<Attachment2> files);
 
-	List<Attachment2> whereSerch(Map  paramMap, int cPage, int numPerpage);
+	List<Attachment2> whereSerch( int cPage, int numPerpage);
 	
 	int boardDelete(String boardNo);
 	
