@@ -93,7 +93,7 @@
             <img usemap="#personal3" src="https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FQpdA1%2FbtqARXIcLjV%2FWfbkk3dh5nrc3aPd4yg3J1%2Fimg.gif" style="background-size: cover;width: 50Px; height: 50px; border-radius: 15px;border: solid;margin-left: 5px;">
         </div>
         <map name="personal1">
-        <area shape="rect" coords="00,00,150,300" href="http://rclass.iptime.org:9999/20PM_binbang/" alt="빈방"> 
+        <area shape="rect" coords="00,00,150,300" href="http://13.209.129.60:8080/hajun/" alt="빈방"> 
     </map>
      <map name="personal2">
         <area shape="rect" coords="00,00,150,300" href="https://github.com/HajunIn/portfolio/files/5909266/_.docx" alt="포폴">

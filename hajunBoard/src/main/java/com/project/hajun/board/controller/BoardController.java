@@ -41,25 +41,13 @@ public class BoardController {
 	public ModelAndView boardList(HttpServletRequest request, ModelAndView mv,
 			// 페이지바 만들기
 			@RequestParam(value = "cPage", defaultValue = "1") int cPage,
-			@RequestParam(value = "numPerpage", defaultValue = "10") int numPerpage) {
-
-		// mv.addObject("list", service.boardList(cPage, numPerpage));
-		 
-
-		 
-		
-		Map<String, Object> paramMap = new HashMap<String, Object>();
-		String memberNo1 = request.getParameter("memberNo");
-		paramMap.put("memberNo", memberNo1);
+			@RequestParam(value = "numPerpage", defaultValue = "7") int numPerpage) {
 
 		List<Attachment2> board = service.whereSerch( cPage, numPerpage);
 		int totalData = service.selectBoardCount(); /* 이거페이지바 */
 
 		 mv.addObject("pageBar", PageBar.getPageBar3(totalData, cPage,numPerpage, "board.do"));
-		 mv.addObject("totalData", totalData);
-		
-			
-			
+
 		System.out.println("결과" + board);
 		// System.out.println("결과2"+att);
 		mv.addObject("board", board);

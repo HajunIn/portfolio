@@ -156,9 +156,8 @@
  			function fn_toggle() {
                 	if(${commonLogin == null}){
                 	alert('로그인후 이용가능합니다');
-                	return;
-                	}else {
-                		$(".test").attr("href","${path }/board/board.do?memberNo=${commonLogin.memberNo}");
+                	
+                		$(".test").attr("href","${path }/board/board.do");
                 	}
  			};
  			function fn_toggle2() {

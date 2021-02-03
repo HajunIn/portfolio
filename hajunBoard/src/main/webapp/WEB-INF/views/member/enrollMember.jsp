@@ -174,7 +174,7 @@ right: 0;
 
   
 
-        <input type="submit" class="btn btn-info btn-sm ml-0" onclick="return fn_member();" value="회원가입"><i class="far fa-paper-plane ml-2"></i>
+        <input type="submit" class="btn btn-info btn-sm ml-0" value="회원가입"><i class="far fa-paper-plane ml-2"></i>
 </form>
       </div>
       <!--Grid column-->
@@ -188,32 +188,37 @@ right: 0;
 
 
 </div>
-<script>
- function fn_member(){
-		var r ="";
-	 $.ajax({
-			type : "post",
-			  async: false,
-			 url : "${path}/member/loginCheck",
-			data : {"userId":$("#userId").val()} ,
-		success : function(data) {
-	        if (data > 0) {
-	        	 r=false;
-	        } else{
-	        	$(".guide.error").show();
-	        	$(".guide.ok").hide();
-	        	 r=true;
-	        }
-	    }	
-		})
-		if(r== false){
-			return false;
-		} else{
-			return true;
-		}
-   
-}; 
-</script>
+
+
+<!-- <script>
+function fn_member(){
+	 var r ="";
+		 $.ajax({
+				type : "post",
+				  async: false,
+				 url : "${path}/member/loginCheck",
+				data : {"userId":$("#userId").val()} ,
+			success : function(data) {
+		        if (data > 0) {
+		        	 r=false;
+		        	 $(".guide.error").hide();
+			        	$(".guide.ok").show();
+		        } else{
+		        	$(".guide.error").show();
+		        	$(".guide.ok").hide();
+		        	 r=true;
+		        }
+		    }	
+			});
+			if(r== false){
+				return false;
+			} else{
+				return true;
+			};
+	
+ };
+
+ </script> -->
 
 <script>
 	function logincheck() {
@@ -224,6 +229,14 @@ right: 0;
 		let re = /^[a-z0-9]{4,12}$/;
 		var repw = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 
+			
+			 if ($('#name').val() === "" || $('#address').val() === ""
+					|| $('#email').val() === "" || $('phone').val() === "") {
+				alert('필수 항목들을 입력해주세요!');
+				return false;
+			}
+
+		
 		//비밀번호 8자리 이상
 		//숫자,영대문자,영소문자,특수문자 포함
 		//공백X 같은문자 4번 반복X 아이디 X 한글 X
@@ -249,22 +262,23 @@ right: 0;
 			console.log("통과");
 		}
 		;
-		if ($('#name').val() === "" || $('#address').val() === ""
-			|| $('#email').val() === "" || $('phone').val() === "") {
-		alert('필수 항목들을 입력해주세요!');
-		return false;
-	}
-		
-		if (userId != "") {
-			if (!re.test(userId)) {
-				alert("아이디 형식이 올바르지 못합니다.")
-				return false;
-			};
-		} else {
-			alert("아이디를 작성해주세요");
-			return false;
-		};
 
+		
+		
+		 
+
+			 if (userId != "") {
+					if (!re.test(userId)) {
+						alert("아이디 형식이 올바르지 못합니다.")
+						return false;
+					}
+					;
+				} else {
+					alert("아이디를 작성해주세요");
+					return false;
+				};
+			
+			
 	};
 </script>
 

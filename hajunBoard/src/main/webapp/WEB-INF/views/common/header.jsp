@@ -51,22 +51,22 @@
                <ul class="navbar-nav mr-auto">
                   <li class="nav-item"><a class="nav-link" href="${path }">Home</a>
                   </li>
-                  <li class="nav-item"><a class="nav-link test" style="cursor:pointer;" href="${path }/board/board.do">게시판</a></li><%-- <button onclick="location.href='${path}/board/test.do'">클릭</button> --%>
+                  <li class="nav-item"><a class="nav-link test" style="cursor:pointer;" href="${path }/board/board.do">게시판</a></li> <button onclick="location.href='${path}/board/test.do'">클릭</button>
                   <c:if test="${commonLogin ne null }">
                    <li class="nav-item"><a class="nav-link test" style="cursor:pointer;" href="${path}/board/goodsList.do?memberNo=${commonLogin.memberNo}" >등록상품 바로가기</a></li>
            		  </c:if>
                
             
                </ul>
- <script>
- 			/* function fn_toggle() {
+<!--  <script>
+ 			 function fn_toggle() {
                 	if(${commonLogin == null}){
                 	alert('로그인후 이용가능합니다');
                 
                 		$(".test").attr("href","${path }/board/board.do?memberNo=${commonLogin.memberNo}");
                 	}
- 			}; */
-                </script> 
+ 			}; 
+                </script>  -->
                 
                <c:if test="${commonLogin == null }">
                   <button class="btn btn-outline-success my-2 my-sm-0" type="button"
